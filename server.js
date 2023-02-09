@@ -5,6 +5,8 @@ const express = require('express')
 const config = require('./app/config/config');
 const mariadb = require('mariadb/callback');
 
+
+// DB Connection
 const conn = mariadb.createConnection({
   host: config.db.host, 
   database: config.db.database,
@@ -18,7 +20,7 @@ conn.connect(err => {
 });
 
 
-
+// Starting Server
 const app = express()
 
 app.use('/', express.static(path.join(__dirname, 'app/client')))
