@@ -1,0 +1,186 @@
+.container {  
+    margin-left: 30px;
+    margin-right: 30px;
+    display: grid; 
+    grid-template-columns: 200px 2.8fr 200px; 
+    grid-template-rows: 70px auto 30px; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "header header header"
+    "menu content-container sidemenu"
+    "footer footer footer"; 
+}
+  
+.header { 
+    grid-area: header;
+    background-color: rgb(1, 128, 33); 
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+}
+.header h2 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: x-large;
+}
+
+.menu { 
+    grid-area: menu;
+    background-color: rgb(255, 255, 255);
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;  
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+  
+.content-container { 
+    grid-area: content-container;
+    background-color: rgb(255, 255, 255);
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;  
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+  
+.sidemenu { 
+    grid-area: sidemenu; 
+    background-color: rgb(255, 255, 255);
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;  
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+  
+.footer { 
+    grid-area: footer;
+    background-color: rgb(1, 128, 33);  
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+}
+.footer h6 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 200;
+    color: white;
+    font-size: small;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+  
+.vertical-menu {
+    width: 180px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:x-small;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  
+  .vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin: 3px;
+  }
+  
+  .vertical-menu a:hover {
+    background-color: #ccc;
+  }
+  
+  .vertical-menu a.active {
+    background-color: rgb(1, 128, 33);
+    color: white;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin: 3px;
+  }
+
+.content {
+    margin: 0;
+    position:absolute;
+    top: 30%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+  .login {
+    width: 400px;
+    margin: 5px 5px 5px 5px;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px 5px 5px 5px;
+    text-align: right;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+
+.login input {
+    width: 200px;
+    padding: 5px 5px;
+    margin: 8px 0;
+    border: 1px solid green;
+    margin-right: 30px;
+}
+
+.login input[type=button], input[type=submit], input[type=reset] {
+    background-color: rgb(1, 128, 33);
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: small;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    width: 400px
+  }
+
+  .login h2 {
+    width: 90;
+    text-align: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color:white;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    font-size:large;
+    padding: 2px;
+    background-color: rgb(1, 128, 33);
+    color: white;
+  }
