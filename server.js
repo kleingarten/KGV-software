@@ -3,15 +3,14 @@ const path = require("path");
 const bodyParser = require('body-parser');
 const express = require('express')
 const config = require('./app/config/config');
-
-
 const mariadb = require('mariadb/callback');
+
 const conn = mariadb.createConnection({
-  host: 'localhost', 
-  database: 'kgvDB',
-  user:'node', 
-  password: 'Dynamit007!',
-  port: 3306
+  host: config.db.host, 
+  database: config.db.database,
+  user: config.db.user, 
+  password: config.db.password,
+  port: config.db.port
 });
 conn.connect(err => {
     if (err) return console.log("Failed to connect");
