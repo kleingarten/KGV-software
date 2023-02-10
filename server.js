@@ -1,78 +1,38 @@
+const bodyParser = require('body-parser');
 const express = require('express');
+const app = express();
 const session = require('express-session');
 const path = require('path');
-const config = require('./app/config/config');
-const mysql = require('mariadb/callback');
+const config = require('./src/configs/general.config');
+const kleingartensoftwareRouter = require('./src/routes/kleingartensoftware.route');
 
-// Connect to DB
-const connection = mysql.createConnection({
-	host     : config.db.host,
-	user     : config.db.user,
-	password: config.db.password,
-	database : config.db.database
-});
-
-const app = express();
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 app.use(session({
-	secret: config.app.secret,
+	secret: config.secret,
 	resave: true,
 	saveUninitialized: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '/app/client/static')));
+app.use(express.static(path.join(__dirname, '/src/client/static')));
 
-// http://localhost:3000/
-app.get('/', function(request, response) {
-	// Render login template
-	response.sendFile(path.join(__dirname, '/app/client/login.html'));
+app.use('/', kleingartensoftwareRouter);
 
-});
+/* Error handler middleware */
+app.use((err, req, res, next) => {
+	const statusCode = err.statusCode || 500;
+	console.error(err.message, err.stack);
+	res.status(statusCode).json({'message': err.message});
+	return;
+  });
 
-// http://localhost:3000/auth
-app.post('/auth', function(request, response) {
-	// Capture the input fields
-	let username = request.body.username;
-	let password = request.body.password;
-	// Ensure the input fields exists and are not empty
-	if (username && password) {
-		// Execute SQL query that'll select the account from the database based on the specified username and password
-		connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
-			// If there is an issue with the query, output the error
-			if (error) throw error;
-			// If the account exists
-			if (results.length > 0) {
-				// Authenticate the user
-				request.session.loggedin = true;
-				request.session.username = username;
-				// Redirect to home page
-				response.redirect('/home');
-			} else {
-				response.send('Incorrect Username and/or Password!');
-			}			
-			response.end();
-		});
-	} else {
-		response.send('Please enter Username and Password!');
-		response.end();
-	}
-});
-
-// http://localhost:3000/home
-app.get('/home', function(request, response) {
-	// If the user is loggedin
-	if (request.session.loggedin) {
-		// Output username
-    console.log(request.sessionID);
-    return response.sendFile(path.join(__dirname, '/app/client/index.html'));
-	} else {
-		// Not logged in
-		response.send('Please login to view this page!');
-	}
-	response.end();
-});
-
-app.listen(config.app.port, () =>
-  console.log(`Server is listening on port ${config.app.port}!`),
+app.listen(config.port, () =>
+  console.log(`Server is listening on port ${config.port}!`),
 );
