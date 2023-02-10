@@ -1,7 +1,8 @@
 // config.js
 const config = {
     app: {
-      port: 4000
+      port: 4000,
+      secret: '43934989483948'
     },
     db: {
       host: 'localhost', 
