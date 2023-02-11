@@ -5,7 +5,7 @@ const dbConfig = require('../configs/db.config');
 const mysql = require('mariadb/callback');
 
 async function login(req, res) {
-    res.sendFile(path.join(__dirname, '../client/login.html'));
+    res.sendFile(path.join(__dirname, '../view/login.html'));
 };
 
 async function auth(req, res) {
@@ -31,6 +31,9 @@ async function auth(req, res) {
 				// Authenticate the user
 				req.session.loggedin = true;
 				req.session.username = username;
+				req.session.real_name = result[0].real_name;
+				req.session.club_function = result[0].club_function;
+				req.session.email = result[0].email;
 				// Redirect to home page
 				res.redirect('/home');
 			} else {
@@ -38,6 +41,7 @@ async function auth(req, res) {
 			}			
 			res.end();
 		});
+
 	} else {
 		res.send('Please enter Username and Password!');
 		res.end();
@@ -45,13 +49,37 @@ async function auth(req, res) {
 };
 
 async function home(req, res) {
-    // If the user is loggedin
+	// If the user is loggedin
 	if (req.session.loggedin) {
 		// Output username
-    return res.sendFile(path.join(__dirname, '../client/index.html'));
+    return res.render(path.join(__dirname, '../view/index'), {
+		username: req.session.username,
+		real_name: req.session.real_name,
+		email: req.session.email,
+		club_function: req.session.club_function,
+		active_button: 'home'
+	});
 	} else {
 		// Not logged in
-    return res.sendFile(path.join(__dirname, '../client/login.html'));
+    return res.sendFile(path.join(__dirname, '../view/login.html'));
+	}
+	res.end();
+};
+
+async function plant(req, res) {
+	// If the user is loggedin
+	if (req.session.loggedin) {
+		// Output username
+    return res.render(path.join(__dirname, '../view/plant'), {
+		username: req.session.username,
+		real_name: req.session.real_name,
+		email: req.session.email,
+		club_function: req.session.club_function,
+		active_button: 'plant'
+	});
+	} else {
+		// Not logged in
+    return res.sendFile(path.join(__dirname, '../view/login.html'));
 	}
 	res.end();
 };
@@ -59,5 +87,6 @@ async function home(req, res) {
 module.exports = {
     login, 
     auth,
-    home
+    home,
+	plant
 };

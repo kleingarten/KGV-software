@@ -21,9 +21,11 @@ app.use(session({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '/src/client/static')));
+app.use(express.static(path.join(__dirname, '/src/view/static')));
 
 app.use('/', kleingartensoftwareRouter);
+
+app.set("view engine", "ejs");
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
