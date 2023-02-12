@@ -17,6 +17,16 @@ async function login(req, res) {
     res.sendFile(path.join(__dirname, '../view/login.html'));
 };
 
+async function login_again(req, res) {
+    res.sendFile(path.join(__dirname, '../view/login_again.html'));
+};
+
+async function logout(req, res) {
+	req.session.loggedin = false;
+	req.session.username = '';
+    res.sendFile(path.join(__dirname, '../view/login.html'));
+};
+
 async function auth(req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
@@ -31,12 +41,13 @@ async function auth(req, res) {
 				req.session.email = result[0].email;
 				res.redirect('/home');
 			} else {
-				res.send('Incorrect Username and/or Password!');
+				//res.send('Incorrect Username and/or Password!');
+				res.redirect('/login_again');
 			}			
 			res.end();
 		});
 	} else {
-		res.send('Please enter Username and Password!');
+		res.redirect('/');
 		res.end();
 	}
 	connection.close;
@@ -76,9 +87,14 @@ async function plant(req, res, next) {
 	}
 };
 
+
+
+
 module.exports = {
-    login, 
+    login,
+	login_again, 
     auth,
     home,
-	plant
+	plant,
+	logout
 };
