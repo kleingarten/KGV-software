@@ -17,7 +17,11 @@
         <a href="#">FINANZEN</a>
         <a href="#">VEREINSFUNKTIONEN</a>
         <a href="#">LISTEN ERSTELLEN</a>
-        <a href="/inventar">INVENTAR</a>
+        <% if (active_button === 'inventory') { %>
+          <a href="/inventory" class="active">INVENTAR</a>
+          <%} else { %>
+          <a href="/inventory">INVENTAR</a>
+          <% } %>
         <a href="#">ZUSATZPROGRAMME</a>
         <a href="/logout">ABMELDEN</a>
       </div>

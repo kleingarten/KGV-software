@@ -1,0 +1,42 @@
+<div class="content-container">
+    <div class="inventory_content">
+        <div id="item-inventory0">
+            <div id="inventory_header">
+                <h2>INVENTAR - &Uuml;BERSICHT</h2>
+                <h3>Inventar anlegen, bearbeiten und löschen</h3>
+                <h4>&nbsp;</h4>
+            </div>
+        </div>
+        <div id="item-inventory1">
+            <table>           
+                <tr>
+                    <td>ID</td>
+                    <td>Inventar Nr.</td>
+                    <td>Bezeichnung</td>
+                    <td>Menge</td>
+                    <td>Kaufdatum</td>
+                    <td>Verf&uuml;gbar</td>
+                    <td>Aussortiert am</td>
+                    <td>Edit</td>
+                    <td>L&ouml;schen</td>
+                </tr>
+                <% for (var i = 0; i < resultCount; i++) { %> 
+                <tr>
+                    <td><%=result[i].id%></td>
+                    <td><%=result[i].inventory_number%></td>
+                    <td><%=result[i].description%></td>
+                    <td><%=result[i].amount%></td>
+                    <td><%=result[i].purchase_date%></td>
+                    <td><%=result[i].available%></td>
+                    <td><%=result[i].sorted_out_date%></td>
+                    <td><a href="/editInventory?id=<%=i%>">E</a></td>
+                    <td><a href="/deleteInventory?id=<%=i%>">D</a></td>
+
+                </tr>
+                <%}%>
+            </table>
+        </div>
+        <div id="item-inventory2">
+        </div>
+    </div>
+</div>

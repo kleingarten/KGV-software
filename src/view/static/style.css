@@ -77,8 +77,8 @@ body {
     border-style: solid;
     border-width: 1px;
     font-size: 20px;
-    bo
 }
+
 .login form input[type="submit"]:hover {
   background-color: #2868c7;
     transition: background-color 0.2s;
@@ -261,7 +261,7 @@ body {
         
      }
      
-      #item-0 {
+      #item-plant0 {
      
         background-color: white; 
         grid-row-start: 1;
@@ -277,7 +277,7 @@ body {
         
      }
  
-     #item-1 {
+     #item-plant1 {
      
         background-color: white; 
         grid-row-start: 2;
@@ -292,7 +292,7 @@ body {
         margin: 2px;
         
      }
-     #item-2 {
+     #item-plant2 {
      
         background-color: white; 
         grid-row-start: 3;
@@ -307,7 +307,7 @@ body {
         margin: 2px;
         
      }
-     #item-3 {
+     #item-plant3 {
      
         background-color: white; 
         grid-row-start: 4;
@@ -322,7 +322,7 @@ body {
         margin: 2px;
         
      }
-     #item-4 {
+     #item-plant4 {
      
         background-color: white; 
         grid-row-start: 5;
@@ -337,7 +337,7 @@ body {
         margin: 2px;
         
      }
-     #item-5 {
+     #item-plant5 {
      
         background-color: white; 
         grid-row-start: 4;
@@ -352,7 +352,7 @@ body {
         margin: 2px;
         
      }
-     #item-6 {
+     #item-plant6 {
      
         background-color: white; 
         grid-row-start: 5;
@@ -367,7 +367,7 @@ body {
         margin: 2px;
         
      }
-     #item-7 {
+     #item-plant7 {
      
         background-color: white; 
         grid-row-start: 4;
@@ -382,7 +382,7 @@ body {
         margin: 2px;
         
      }
-     #item-8 {
+     #item-plant8 {
      
         background-color: white; 
         grid-row-start: 2;
@@ -397,7 +397,7 @@ body {
         margin: 2px;
         
      }
-     #item-9 {
+     #item-plant9 {
      
         background-color: white; 
         grid-row-start: 4;
@@ -412,3 +412,103 @@ body {
         margin: 2px;
         
      }
+
+#inventory_header {
+    width: 99%; 
+    margin: auto; 
+        
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #eee;
+}     
+
+#inventory_header h2 {
+    margin: 2px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    color:rgb(0, 0, 0);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+    
+#inventory_header h3 {
+    margin: 1px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    color:black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#inventory_header h4 {
+    margin: 1px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    color:black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+    
+.inventory_content {
+    display: grid; 
+     
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+        
+    gap: 0px;
+    height: 100%;
+        
+}
+     
+#item-inventory0 {
+     
+    background-color: white; 
+    grid-row-start: 1;
+    grid-column-start: 1;
+     
+    grid-row-end: 2;
+    grid-column-end: 5;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin: 2px;
+        
+}     
+
+#item-inventory1 {
+     
+    background-color: white; 
+    grid-row-start: 2;
+    grid-column-start: 1;
+     
+    grid-row-end: 5;
+    grid-column-end: 5;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin: 2px;
+        
+}   
+
+#item-inventory2 {
+     
+    background-color: white; 
+    grid-row-start: 5;
+    grid-column-start: 1;
+     
+    grid-row-end: 6;
+    grid-column-end: 5;
+    border-radius: 5px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin: 2px;
+        
+}  

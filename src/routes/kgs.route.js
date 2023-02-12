@@ -16,8 +16,11 @@ router.get('/home', kgsController.home)
 // ShOW & EDIT PLANT
 router.get('/plant', kgsController.plant)
 
+// LOGOUT
 router.get('/logout', kgsController.logout)
 
+// SHOW INVENTORY
+router.get('/inventory', kgsController.inventory)
 
 
 module.exports = router;

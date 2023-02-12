@@ -88,6 +88,21 @@ async function plant(req, res, next) {
 };
 
 
+async function inventory(req, res, next) {
+	if (req.session.loggedin) {
+		await connection.query('SELECT * FROM inventory', function(error, result, fields) {
+			if (error) throw err;
+			res.render(path.join(__dirname, '../view/inventory'), {
+				active_button: 'inventory',
+				resultCount: result.length,
+				result
+			});
+		});
+		connection.end;
+	} else {
+    	return res.sendFile(path.join(__dirname, '../view/login.html'));
+	}
+};
 
 
 module.exports = {
@@ -96,5 +111,6 @@ module.exports = {
     auth,
     home,
 	plant,
-	logout
+	logout,
+	inventory
 };
