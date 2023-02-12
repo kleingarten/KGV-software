@@ -15,7 +15,8 @@
   "keywords": [
     "NodeJs",
     "express",
-    "mariadb"
+    "mariadb",
+    "ejs"
   ],
   "author": "Andreas Mueller",
   "license": "MIT",

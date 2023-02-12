@@ -4,7 +4,7 @@ const app = express();
 const session = require('express-session');
 const path = require('path');
 const config = require('./src/configs/general.config');
-const kleingartensoftwareRouter = require('./src/routes/kleingartensoftware.route');
+const kgsRouter = require('./src/routes/kgs.route');
 
 app.use(bodyParser.json());
 app.use(
@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/src/view/static')));
 
-app.use('/', kleingartensoftwareRouter);
+app.use('/', kgsRouter);
 
 app.set("view engine", "ejs");
 
