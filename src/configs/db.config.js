@@ -1,7 +1,7 @@
 const db = {
     host: 'localhost',
-    user: 'root',
-    password: 'Plastic009!',
+    user: 'cloudserver',
+    password: 'Dynamit007!',
     database: 'kgvDB' || 'programming_languages',
     port: '3306' || 3306
 };
