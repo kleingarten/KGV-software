@@ -8,17 +8,17 @@
             </div>
         </div>
         <div id="item-inventory1">
-            <table>           
+            <table class="center">           
                 <tr>
-                    <td>ID</td>
-                    <td>Inventar Nr.</td>
-                    <td>Bezeichnung</td>
-                    <td>Menge</td>
-                    <td>Kaufdatum</td>
-                    <td>Verf&uuml;gbar</td>
-                    <td>Aussortiert am</td>
-                    <td>Edit</td>
-                    <td>L&ouml;schen</td>
+                    <th>ID</th>
+                    <th>Inventar Nr.</th>
+                    <th>Bezeichnung</th>
+                    <th>Menge</th>
+                    <th>Kaufdatum</th>
+                    <th>Verf&uuml;gbar</th>
+                    <th>Aussortiert am</th>
+                    <th>Edit</th>
+                    <th>L&ouml;schen</th>
                 </tr>
                 <% for (var i = 0; i < resultCount; i++) { %> 
                 <tr>
@@ -26,11 +26,11 @@
                     <td><%=result[i].inventory_number%></td>
                     <td><%=result[i].description%></td>
                     <td><%=result[i].amount%></td>
-                    <td><%=result[i].purchase_date%></td>
+                    <td><%=result[i].purchase_date.getMonth() + "." + result[i].purchase_date.getDay() + "."+result[i].purchase_date.getFullYear()%></td>
                     <td><%=result[i].available%></td>
                     <td><%=result[i].sorted_out_date%></td>
-                    <td><a href="/editInventory?id=<%=i%>">E</a></td>
-                    <td><a href="/deleteInventory?id=<%=i%>">D</a></td>
+                    <td><a href="/editInventory?id=<%=i%>"><button class="btnedit" type="button">UPDATE</button></a></td>
+                    <td><a href="/deleteInventory?id=<%=i%>"><button class="btndelete" type="button">DELETE</button></a></td>
 
                 </tr>
                 <%}%>
