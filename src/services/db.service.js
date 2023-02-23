@@ -1,4 +1,4 @@
-const mysql = require('mariadb/callback');
+const mysql = require('mysql2');
 const dbConfig = require('../configs/db.config');
 
 async function query(sql, params) {

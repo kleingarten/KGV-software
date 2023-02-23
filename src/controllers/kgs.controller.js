@@ -2,7 +2,7 @@ const path = require('path');
 const session = require('express-session');
 const kgs = require('../services/kgs.service');
 const dbConfig = require('../configs/db.config');
-const mysql = require('mariadb/callback');
+const mysql = require('mysql2');
 
 
 const connection = mysql.createConnection({
@@ -31,7 +31,7 @@ async function auth(req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
 	if (username && password) {
-		await connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, result, fields) {
+		connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, result, fields) {
 			if (error) throw error;
 			if (result.length > 0) {
 				req.session.loggedin = true;
@@ -69,7 +69,7 @@ async function home(req, res) {
 
 async function plant(req, res, next) {
 	if (req.session.loggedin) {
-		await connection.query('SELECT * FROM basedata WHERE id = 1', function(error, result, fields) {
+		connection.query('SELECT * FROM basedata WHERE id = 1', function(error, result, fields) {
 			if (error) throw err;
 			res.render(path.join(__dirname, '../view/plant'), {
 				active_button: 'plant',
@@ -90,7 +90,7 @@ async function plant(req, res, next) {
 
 async function inventory(req, res, next) {
 	if (req.session.loggedin) {
-		await connection.query('SELECT * FROM inventory', function(error, result, fields) {
+		connection.query('SELECT * FROM inventory', function(error, result, fields) {
 			if (error) throw err;
 			res.render(path.join(__dirname, '../view/inventory'), {
 				active_button: 'inventory',

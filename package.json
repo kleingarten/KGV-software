@@ -15,7 +15,7 @@
   "keywords": [
     "NodeJs",
     "express",
-    "mariadb",
+    "mysql",
     "ejs"
   ],
   "author": "Andreas Mueller",
@@ -30,7 +30,7 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "mariadb": "^3.0.2",
+    "mysql2": "^3.1.2",
     "nodemon": "^2.0.20",
     "path": "^0.12.7"
   }
